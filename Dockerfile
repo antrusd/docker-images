@@ -7,21 +7,28 @@ RUN apk --no-cache add busybox-extras \
                        netcat-openbsd \
                         tcptraceroute \
                            bind-tools \
+                           util-linux \
                             net-tools \
                              iproute2 \
                               tcpdump \
                               iputils \
                               ethtool \
+                              sysstat \
                                procps \
                                iperf3 \
+                               screen \
+                               strace \
+                               ltrace \
                                 rsync \
                                 whois \
                                 socat \
+                                ngrep \
                                  curl \
+                                 lsof \
                                  nmap \
                                  bash \
                                   mtr \
                                   wrk \
                                    jq
 
-CMD ["socat", "-v", "TCP-LISTEN:2525,fork,reuseaddr", "exec:'/bin/cat'"]
+CMD ["bash", "-l", "-i"]
