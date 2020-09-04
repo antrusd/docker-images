@@ -8,7 +8,7 @@ RUN apk --no-cache add busybox-extras \
                         tcptraceroute \
                            bind-tools \
                            util-linux \
-                            docker-ce \
+                           docker-cli \
                             net-tools \
                              iproute2 \
                               tcpdump \
