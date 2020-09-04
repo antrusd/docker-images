@@ -83,7 +83,7 @@ done
 echo
 echo "dockerd ready to use"
 
-if [ -n ${1} ]; then
+if [ ${#} -gt 0 ]; then
     exec "$@"
 else
     while sleep 1h; do
