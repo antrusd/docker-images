@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.12
 
 MAINTAINER Anthony Rusdi (root@antrusd.me)
 
@@ -8,6 +8,7 @@ RUN apk --no-cache add busybox-extras \
                         tcptraceroute \
                            bind-tools \
                            util-linux \
+                            docker-ce \
                             net-tools \
                              iproute2 \
                               tcpdump \
@@ -31,4 +32,4 @@ RUN apk --no-cache add busybox-extras \
                                   wrk \
                                    jq
 
-CMD ["bash", "-l", "-i"]
+CMD ["bash"]
