@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kink-node-${CI_PROJECT_ID}-${CI_PIPELINE_ID}-${NODE_ID}
+  namespace: kink
+  labels:
+    kink: kink-${CI_PROJECT_ID}-${CI_PIPELINE_ID}
+    role: node
+spec:
+  containers:
+    - name: k3s-node
+      image: antrusd/kink:v1.16.15-2
+      imagePullPolicy: IfNotPresent
+      securityContext:
+        privileged: true
+      env:
+        - name: K3S_API_SERVER
+          value: kink-${CI_PROJECT_ID}-${CI_PIPELINE_ID}.kink.svc
+        - name: K3S_TOKEN
+          value: ${CI_PROJECT_ID}-${CI_PIPELINE_ID}
+      resources:
+        limits:
+          cpu: 2
+          memory: 2Gi
+        requests:
+          cpu: 1
+          memory: 1Gi
+  imagePullSecrets:
+    - name: registry-token
